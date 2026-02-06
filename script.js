@@ -6,24 +6,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let noCount = 0;
 
-    // Floating Hearts Generation
+    // Floating Hearts Generation - Premium & Optimized
     function createHeart() {
-        // Limit hearts on screen for performance
-        if (document.querySelectorAll('.heart').length > 25) return;
+        const isMobile = window.innerWidth <= 480;
+        const maxHearts = isMobile ? 15 : 30;
+
+        if (document.querySelectorAll('.heart').length >= maxHearts) return;
 
         const heart = document.createElement('div');
         heart.classList.add('heart');
-        heart.innerHTML = '❤️';
 
-        // Random horizontal start position
+        // Premium touch: Randomize emojis and sizes
+        const emojis = ['❤️', '💖', '💝', '💕', '💗'];
+        heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+        const size = Math.random() * (isMobile ? 15 : 25) + 10;
+        heart.style.fontSize = size + 'px';
         heart.style.left = Math.random() * 100 + 'vw';
         heart.style.top = '100vh';
+        heart.style.opacity = Math.random() * 0.5 + 0.3;
 
-        // Random movement properties
-        const duration = 5 + Math.random() * 5;
-        const tx = (Math.random() - 0.5) * 200; // random drift left/right
-        const ty = -(100 + Math.random() * 50) + 'vh'; // fly up
-        const rot = (Math.random() - 0.5) * 360; // random rotation
+        // Optimized movement: translateZ(0) for GPU
+        const duration = 6 + Math.random() * 6;
+        const tx = (Math.random() - 0.5) * (isMobile ? 100 : 200);
+        const ty = -(100 + Math.random() * 50) + 'vh';
+        const rot = (Math.random() - 0.5) * 360;
 
         heart.style.setProperty('--duration', duration + 's');
         heart.style.setProperty('--tx', tx + 'px');
@@ -32,19 +39,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.body.appendChild(heart);
 
-        // Remove heart after animation
         setTimeout(() => {
             heart.remove();
         }, duration * 1000);
     }
 
-    // Create hearts at intervals (Optimized: slower rate)
-    setInterval(createHeart, 800);
+    // Smoother spawning interval
+    setInterval(createHeart, 1000);
 
-    // Initial burst (Reduced for performance)
-    for (let i = 0; i < 5; i++) {
-        setTimeout(createHeart, Math.random() * 2000);
-    }
+    // Initial burst (Subtle for performance)
+    setTimeout(() => {
+        for (let i = 0; i < 3; i++) {
+            setTimeout(createHeart, i * 500);
+        }
+    }, 1000);
 
     // Runaway logic for NO button
     if (noBtn) {
