@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAY! 💖✨</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body class="success-page">
+    <div class="container">
+        <div class="glass-card success-card">
+            <h1 class="celebration-text">YAY! I knew you'd say yes! 💖✨</h1>
+            <div class="typewriter-container">
+                <p id="loveMessage" class="typewriter"></p>
+            </div>
+
+            <!-- Carousel Placeholder -->
+            <div class="carousel-container">
+                <div class="carousel">
+                    <!-- Images will be added here or via JS -->
+                    <div class="carousel-item active">
+                        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=800&auto=format&fit=crop"
+                            alt="Romantic 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=800&auto=format&fit=crop"
+                            alt="Romantic 2">
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button id="prevBtn">&lt;</button>
+                    <button id="nextBtn">&gt;</button>
+                </div>
+            </div>
+
+            <div class="share-buttons">
+                <button class="share-btn whatsapp">Share on WhatsApp 📱</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+    <script>
+        // Trigger confetti on load
+        window.onload = () => {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff4d6d', '#ff758f', '#ffb3c1', '#ffffff']
+            });
+            typeWriter();
+        };
+
+        const message = "You've made me the happiest coder in the world! 🚀💖 Let's build a beautiful future together, line by line, bug by bug (okay, maybe no bugs). I love you! 😘";
+        let i = 0;
+        function typeWriter() {
+            if (i < message.length) {
+                document.getElementById("loveMessage").innerHTML += message.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+    </script>
+</body>
+
+</html>
