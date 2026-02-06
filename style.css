@@ -28,9 +28,17 @@ body {
 }
 
 @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .container {
@@ -52,9 +60,17 @@ body {
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 .proposal-text {
@@ -62,7 +78,7 @@ body {
     color: var(--text-color);
     margin-bottom: 15px;
     font-weight: 600;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .sub-text {
@@ -98,9 +114,17 @@ body {
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .btn-yes:hover {
@@ -141,6 +165,7 @@ body {
         transform: translate(0, 0) rotate(0deg);
         opacity: 1;
     }
+
     to {
         transform: translate(var(--tx), var(--ty)) rotate(var(--rot));
         opacity: 0;
@@ -169,7 +194,112 @@ body {
     color: #5a0020;
 }
 
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-item.active {
+    opacity: 1;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 15px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.carousel-controls button {
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.carousel-controls button:hover {
+    background: white;
+    transform: scale(1.1);
+}
+
+.share-buttons {
+    margin-top: 20px;
+}
+
+.share-btn {
+    background-color: #25d366;
+    color: white !important;
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-size: 1rem;
+    box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
+}
+
+.share-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);
+    background-color: #20bd5c;
+}
+
 @media (max-width: 480px) {
-    .proposal-text { font-size: 2rem; }
-    .glass-card { padding: 40px 25px; }
+    .proposal-text {
+        font-size: 2rem;
+    }
+
+    .glass-card {
+        padding: 40px 25px;
+    }
 }
