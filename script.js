@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Floating Hearts Generation
     function createHeart() {
+        // Limit hearts on screen for performance
+        if (document.querySelectorAll('.heart').length > 25) return;
+
         const heart = document.createElement('div');
         heart.classList.add('heart');
         heart.innerHTML = '❤️';
@@ -35,11 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }, duration * 1000);
     }
 
-    // Create hearts at intervals
-    setInterval(createHeart, 400);
+    // Create hearts at intervals (Optimized: slower rate)
+    setInterval(createHeart, 800);
 
-    // Initial burst
-    for (let i = 0; i < 10; i++) {
+    // Initial burst (Reduced for performance)
+    for (let i = 0; i < 5; i++) {
         setTimeout(createHeart, Math.random() * 2000);
     }
 
