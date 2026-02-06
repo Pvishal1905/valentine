@@ -136,7 +136,6 @@ body {
 .btn-no {
     background-color: #ffffff;
     color: var(--primary-color);
-    position: absolute;
 }
 
 #stats {
